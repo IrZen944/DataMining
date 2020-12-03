@@ -1,0 +1,14 @@
+No information rate, adalah proporsi terbesar dari kategori-kategori dalam kelas target.
+Misal didalam kelas target ada kategori High=40%, medium=10%, dan low=50%
+NIR nya adalah 50%
+
+Sensitivity/Recal, adalah banyaknya prediksi positif yang benar per total positif sebenarny (aktual).
+
+Specificity, adalah banyaknya prediksi negatif yang benar, per total negatif sebenarnya. 
+F1 adalah rata-rata harmonic dari precision dan recall
+Precision, jika diprediksi yes, seberapa sering prediksi itu benar
+
+
+makin tinggi f1 maka precision dan recallnya juga tinggi.
+
+

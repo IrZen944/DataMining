@@ -1,0 +1,68 @@
+---
+title: "221810398-3SI2-DMKM"
+author: "M Irsyad Hadi"
+date: "10/27/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r} 
+data <- read_csv("D:/Zona Pelajaran/Semester 5/DMKM/uts/crx.data", sep= ",", header=FALSE)
+library(readr)
+library(tidyverse)
+library(e1071)
+library(caret)
+library(dplyr)
+library(visdat)
+data<-na_if(data,"?")
+colSums((is.na(data)))
+str(crx)
+
+```
+
+```{r}
+
+
+
+head(crx)
+
+names(crx)
+vis_miss(data)
+data<-na.omit(data)
+```
+
+
+
+```{r}
+write.table(crx, file = "crx.data")
+
+datSVM = crx # datSVM tanpa UserID, tidak diperlukan dalam klasifikasi
+datSVM$Purchased = factor(datSVM$"+", c(0,1)) 
+str(datSVM)
+head(datSVM, 16)
+```
+
+```{r}
+
+
+library("caTools")
+set.seed(1234) # Membangkitkan bilangan acak dengan seed = 1234
+Split = sample.split(datSVM$Purchased, SplitRatio = 0.75)
+datLatih = subset(datSVM, Split == TRUE)
+datUji   = subset(datSVM, Split == FALSE)
+
+
+head(Split, 10)
+summary(datSVM[1:16])
+```
+
+
+
+```{r}
+modelSVM <- svm(+, data=crx)
+summary(modelSVM)
+```
+
